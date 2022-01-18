@@ -42,12 +42,10 @@ namespace ADO.NET_WinForm_HW1.ButtonForms
                 genreCB.Items.Add(row[0].ToString());
             }
             DataTable series = Query.Show("SELECT Series.Name FROM [Series];");
-            seriesCB.Items.Add("Without Series");
             foreach (DataRow row in series.Rows)
             {
                 seriesCB.Items.Add(row[0].ToString());
             }
-            seriesCB.SelectedIndex = 0;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -58,15 +56,6 @@ namespace ADO.NET_WinForm_HW1.ButtonForms
                               WHERE Author.Name = '{auhtorCB.SelectedItem}' AND Genre.Name = '{genreCB.SelectedItem}' AND Series.Name = '{seriesCB.SelectedItem}';";
             SqlCommand command = new SqlCommand(query, Main.connection);
             command.ExecuteNonQuery();
-
-            /*
-            string oldQuantity = $@"SELECT Types.Quantity FROM Types WHERE Types.TypeName = '{auhtorCB.SelectedItem}';";
-            SqlCommand command2 = new SqlCommand(oldQuantity, Main.connection);
-            int oldvalue = Convert.ToInt32(command2.ExecuteScalar());
-            string newQuantity = $@"UPDATE Types SET Types.Quantity = {oldvalue + Convert.ToInt32(yearTB.Text)} WHERE Types.TypeName = '{auhtorCB.SelectedItem}';";
-            SqlCommand command3 = new SqlCommand(newQuantity, Main.connection);
-            command3.ExecuteNonQuery();
-            */
 
             dataGridView1.DataSource = Query.Show(getTable);
         }

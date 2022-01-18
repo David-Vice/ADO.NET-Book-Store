@@ -212,6 +212,7 @@
             this.Controls.Add(this.bookCB);
             this.Controls.Add(this.bookLabel);
             this.Name = "Sell";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sell Books";
             this.Load += new System.EventHandler(this.MakeSell_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

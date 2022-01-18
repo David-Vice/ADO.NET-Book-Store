@@ -69,6 +69,8 @@ namespace ADO.NET_WinForm_HW1.ButtonForms
             string queryDelete = $@"DELETE FROM Aside WHERE Aside.Id = {dataGridView1.CurrentRow.Cells["Id"].Value};";
             SqlCommand commandDelete = new SqlCommand(queryDelete, Main.connection);
             commandDelete.ExecuteNonQuery();
+
+            dataGridView1.DataSource = Query.Show(getTable);
         }
 
         private void bookCB_SelectedIndexChanged(object sender, EventArgs e)
